@@ -1,0 +1,12 @@
+[package]
+authors = ["Aleksandr Susha <isushik94@gmail.com>"]
+edition = "2018"
+name    = "dummy-dylib"
+publish = false
+version = "0.1.0"
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+memlib = { path = "../memlib" }
