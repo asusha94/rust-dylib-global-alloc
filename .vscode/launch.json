@@ -7,22 +7,88 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Launch",
+            "name": "Debug executable 'exec'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=exec",
+                    "--package=exec"
+                ],
+                "filter": {
+                    "name": "exec",
+                    "kind": "bin"
+                }
+            },
             "args": [],
-            "program": "${workspaceFolder}/target/debug/exec",
-            "windows": {
-                "program": "${workspaceFolder}/target/debug/exec.exe"
-            },
-            "env": {
-                "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug/deps/;${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/"
-            },
             "cwd": "${workspaceFolder}",
-            "stopOnEntry": false,
-            "sourceLanguages": [
-                "rust"
-            ],
-            "sourceMap": {
-                "/rustc/*": "${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
+            "env": {
+                "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug/deps;${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib"
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'exec'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=exec",
+                    "--package=exec"
+                ],
+                "filter": {
+                    "name": "exec",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug/deps;${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib"
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'dummy-dylib'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=dummy-dylib"
+                ],
+                "filter": {
+                    "name": "dummy-dylib",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug/deps;${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib"
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'memlib'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=memlib"
+                ],
+                "filter": {
+                    "name": "memlib",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug/deps;${env:HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib"
             }
         }
     ]
